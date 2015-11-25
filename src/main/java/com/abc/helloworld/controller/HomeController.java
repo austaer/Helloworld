@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.abc.helloworld.model.Employee;
 import com.abc.helloworld.serviceimpl.HomeServiceImpl;
@@ -72,16 +73,24 @@ public class HomeController {
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
 	public ModelAndView getEmployee(@PathVariable("id") Integer id){
 		ModelAndView modelAndView = new ModelAndView("index");
+		modelAndView.addObject("employee", service.getEmployee(id));
+		modelAndView.addObject("operationType", "listOne");
 		return modelAndView;
 	}
 	
-	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView editEmployee(@PathVariable("id") Integer id){
+		ModelAndView modelAndView = new ModelAndView("index");
+		modelAndView.addObject("operationType", "edit");
+		modelAndView.addObject("employee", service.getEmployee(id));
+		return modelAndView;
+	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView editEmployee(@PathVariable Employee employee){
-		ModelAndView modelAndView = new ModelAndView("index");
+	public String editEmployee(@ModelAttribute Employee employee,
+			@PathVariable("id") String id){
 		service.updateEmployee(employee);
-		return modelAndView;
+		return "forward:/list/" + id;
 	}
 	
 	/*
