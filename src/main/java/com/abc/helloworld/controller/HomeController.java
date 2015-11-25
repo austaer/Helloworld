@@ -75,6 +75,15 @@ public class HomeController {
 		return modelAndView;
 	}
 	
+	
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editEmployee(@PathVariable Employee employee){
+		ModelAndView modelAndView = new ModelAndView("index");
+		service.updateEmployee(employee);
+		return modelAndView;
+	}
+	
 	/*
 	 * @RequestMapping(value = "/index", method = RequestMethod.GET) public
 	 * String getIndex() { logger.debug("index() is executed!"); try { return

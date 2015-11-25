@@ -10,8 +10,6 @@ import javax.persistence.Table;
 @Table(name = "employee")
 public class Employee {
 
-	@Id
-	@GeneratedValue
 	private int id;
 	private String name;
 	private String phone;
@@ -26,6 +24,7 @@ public class Employee {
 		this.setPhone(phone);
 	}
 
+	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}
@@ -34,6 +33,7 @@ public class Employee {
 		this.address = address;
 	}
 
+	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -42,6 +42,9 @@ public class Employee {
 		this.name = name;
 	}
 
+	@Id
+	@GeneratedValue
+	@Column(name = "employeeId")
 	public int getId() {
 		return id;
 	}
@@ -50,6 +53,7 @@ public class Employee {
 		this.id = id;
 	}
 
+	@Column(name = "phone")
 	public String getPhone() {
 		return phone;
 	}

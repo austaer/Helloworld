@@ -15,6 +15,8 @@
 		<br />Total is ${total }
 	</c:if>
 	<br />
+	<a href="${pageContext.request.contextPath}/list">Show Employees</a>
+	<br />
 	<a href="${pageContext.request.contextPath}/add">Add New Employee</a>
 	<br />
 
