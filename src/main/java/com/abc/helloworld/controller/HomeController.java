@@ -87,10 +87,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public String editEmployee(@ModelAttribute Employee employee,
-			@PathVariable("id") String id){
+	public ModelAndView editEmployee(@ModelAttribute Employee employee){
+		ModelAndView modelAndView = new ModelAndView("index");
 		service.updateEmployee(employee);
-		return "forward:/list/" + id;
+		return modelAndView;
 	}
 	
 	/*
