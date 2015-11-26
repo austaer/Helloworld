@@ -7,13 +7,14 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import com.abc.helloworld.config.*;
+import com.abc.helloworld.filter.ServerInitFilter;
 
 @Order(1)
 public class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
+	
 	@Override
 	protected Filter[] getServletFilters() {
-		return new Filter[] { new HiddenHttpMethodFilter(), new CharacterEncodingFilter() };
+		return new Filter[] { new HiddenHttpMethodFilter(), new CharacterEncodingFilter(), new ServerInitFilter() };
 	}
 
 	@Override

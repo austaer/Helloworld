@@ -2,16 +2,11 @@ package com.abc.helloworld.config;
 
 import java.util.Properties;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.springframework.cglib.core.Local;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -20,12 +15,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.abc.helloworld.config.CommonConfig;
 
 @Configuration
+//啟動hibernate
 @EnableTransactionManagement
 @ComponentScan({ "com.abc.helloworld.serviceimpl", "com.abc.helloworld.dao" })
 public class SpringRootConfig {
 
 
-/*	@Bean
+/* JDBCTEMPLATE 初始設定	
+ * @Bean
 	public BasicDataSource getDataSource() {
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName(CommonConfig.DB_PARAMETERMAP_DRIVER);
@@ -43,7 +40,8 @@ public class SpringRootConfig {
 		jdbcTemplate.afterPropertiesSet();
 		return jdbcTemplate;
 	}*/
-
+	
+	//Database config 初始化
 	@Bean
 	public DataSource getDataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -54,6 +52,7 @@ public class SpringRootConfig {
 		return dataSource;
 	}
 	
+	//hibernate的config 設定
 	public Properties getProperties() {
 		Properties prop = new Properties();
 		prop.put(CommonConfig.PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
@@ -61,6 +60,7 @@ public class SpringRootConfig {
 		return prop;
 	}
 	
+	//透過hibernate 控制DB的管理器
 	@Bean
 	public HibernateTransactionManager transactionManager(){
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();

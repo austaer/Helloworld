@@ -1,23 +1,18 @@
 package com.abc.helloworld.controller;
 
-import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.abc.helloworld.model.Employee;
 import com.abc.helloworld.serviceimpl.HomeServiceImpl;
 
 @Controller
 public class HomeController {
-
-	private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	private HomeServiceImpl service;
