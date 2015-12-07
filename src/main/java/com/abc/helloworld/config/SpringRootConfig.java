@@ -57,6 +57,9 @@ public class SpringRootConfig {
 		Properties prop = new Properties();
 		prop.put(CommonConfig.PROPERTY_NAME_HIBERNATE_SHOW_SQL, "true");
 		prop.put(CommonConfig.PROPERTY_NAME_HIBERNATE_DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
+		prop.put(CommonConfig.PROPERTY_NAME_CONNECTION_CHARSET, "UTF-8");
+		prop.put(CommonConfig.PROPERTY_NAME_CONNECTION_CHARSETENCODEING, "UTF-8");
+		prop.put(CommonConfig.PROPERTY_NAME_CONNECTION_USEUNICODE, "true");
 		return prop;
 	}
 	

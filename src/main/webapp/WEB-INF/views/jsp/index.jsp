@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="BIG5"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,6 +19,8 @@ table {
 </head>
 <body>
 	Hello, World! the day is a today ${day}
+	<s:property value="name">
+	
 	<c:if test="${not empty total}">
 		<br />Total is ${total }
 	</c:if>
@@ -50,7 +51,7 @@ table {
 				</tr>
 			</tbody>
 		</table>
-		<a href="${pageContext.request.contextPath}/edit/${employee.id}"><input type="button" value="½s¿è"/></a>
+		<a href="${pageContext.request.contextPath}/edit/${employee.id}"><input type="button" value="ç·¨è¼¯"/></a>
 	</c:if>
 
 	<c:if test="${not empty operationType and operationType eq 'edit' }">
@@ -71,7 +72,7 @@ table {
 						<td><form:input path="address" value="${employee.address }"/></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="½T©w" /><input type="reset" value="­«·s¿é¤J" /><a href="${pageContext.request.contextPath}/list"><input type="button" value="¨ú®ø" /></a></td>
+						<td colspan="2"><input type="submit" value="ç¢ºå®š" /><input type="reset" value="é‡æ–°è¼¸å…¥" /><a href="${pageContext.request.contextPath}/list"><input type="button" value="å–æ¶ˆ" /></a></td>
 						<td> </td>
 					</tr>
 				</tbody>

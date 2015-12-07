@@ -1,21 +1,23 @@
 package com.abc.helloworld.filter;
 
 import java.io.IOException;
+import java.util.*;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import com.abc.helloworld.config.LogUtil;
 
-public class ServerInitFilter implements Filter {
+public class Log4jInitFilter implements Filter {
 
 	private String charset = "UTF-8";
 	private String defaulteLog4jPropertiesPath = "/WEB-INF/classes/log4j.properties";
-	private String defaultLogFilePath = "/WEB-INF/logs";
+	private String defaultLogFilePath = "/logs";
 
 	@Override
 	public void destroy() {
@@ -62,6 +64,7 @@ public class ServerInitFilter implements Filter {
 		LogUtil.info("已設定文字集為:"+this.charset);
 	}
 
+	//初始化Log4j
 	private void initLog4j(FilterConfig config) {
 		String log4jPropertiesPath = config.getInitParameter("log4jPropertiesPath");
 		String logFilePath = config.getInitParameter("logFilePath");

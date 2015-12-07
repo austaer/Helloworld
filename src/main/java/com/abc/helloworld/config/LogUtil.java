@@ -6,11 +6,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.hsqldb.lib.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LogUtil {
-	
 	private static Logger logger = LoggerFactory.getLogger(LogUtil.class);
 	
 	public static void info(String message){
@@ -27,26 +27,25 @@ public class LogUtil {
 			p.load(in);
 
 			String basePath = logDirectory + File.separator;
-
-			if (p.getProperty("log4j.appender.info.File") != null) {
+			
+			if (p.getProperty("log4j.appender.info.File") != null && StringUtil.isEmpty(p.getProperty("log4j.appender.info.File").trim())) {
 				p.setProperty("log4j.appender.info.File", basePath + p.getProperty("log4j.appender.info.File"));
 			}
 
-			if (p.getProperty("log4j.appender.debug.File") != null) {
+			if (p.getProperty("log4j.appender.debug.File") != null && StringUtil.isEmpty(p.getProperty("log4j.appender.debug.File").trim())) {
 				p.setProperty("log4j.appender.debug.File", basePath + p.getProperty("log4j.appender.debug.File"));
 			}
 
-			if (p.getProperty("log4j.appender.warn.File") != null) {
+			if (p.getProperty("log4j.appender.warn.File") != null && StringUtil.isEmpty(p.getProperty("log4j.appender.warn.File").trim())) {
 				p.setProperty("log4j.appender.warn.File", basePath + p.getProperty("log4j.appender.warn.File"));
 			}
 
-			if (p.getProperty("log4j.appender.error.File") != null) {
+			if (p.getProperty("log4j.appender.error.File") != null && StringUtil.isEmpty(p.getProperty("log4j.appender.error.File").trim())) {
 				p.setProperty("log4j.appender.error.File", basePath + p.getProperty("log4j.appender.error.File"));
 			}
 
 			PropertyConfigurator.configure(p);
 			in.close();
-			LogUtil.info("日誌位置：" + basePath);
 		} catch (Exception e) {
 			System.out.println("載入log4j配置檔案失敗!");
 		}
