@@ -9,19 +9,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div><span>Login Page !</span> <span style="margin-left:86%"><a href="/register">register</a></span></div>
+	<div>
+		<span>Login Page !</span> <span style="margin-left: 86%"><a
+			href="/register">register</a></span>
+	</div>
 	<form:form method="POST" commandName="user"
 		action="${pageContext.request.contextPath}/login">
 		<div style="display: table;">
 			<div style="display: table-row;">
 				<span style="display: table-cell;">±b¸¹</span> <span
-					style="display: table-cell;"><form:input path="account"/></span>
+					style="display: table-cell;"><form:input path="account" /></span>
 			</div>
 			<div style="display: table-row;">
 				<span style="display: table-cell;">±K½X</span> <span
-					style="display: table-cell;"><form:input path="password" type="password"/></span>
+					style="display: table-cell;"><form:input path="password"
+						type="password" /></span>
 			</div>
-			<input type="submit" value="Login"/> 
+			<input type="submit" value="Login" />
 		</div>
 	</form:form>
 </body>

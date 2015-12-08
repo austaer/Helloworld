@@ -18,9 +18,10 @@ table {
 </style>
 </head>
 <body>
+	<%@ include file="template/header.jsp" %>
 	Hello, World! the day is a today ${day}
-	<s:property value="name">
-	
+	${loginStatus }
+	${username }
 	<c:if test="${not empty total}">
 		<br />Total is ${total }
 	</c:if>

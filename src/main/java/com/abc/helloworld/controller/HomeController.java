@@ -16,7 +16,7 @@ public class HomeController {
 
 	@Autowired
 	private HomeServiceImpl service;
-
+	
 	@RequestMapping(value = "/")
 	public ModelAndView mainPage() {
 		return new ModelAndView("index");

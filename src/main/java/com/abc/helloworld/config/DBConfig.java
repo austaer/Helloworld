@@ -1,6 +1,6 @@
 package com.abc.helloworld.config;
 
-public class CommonConfig {
+public class DBConfig {
 	static final String DB_PARAMETERMAP_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_PARAMETERMAP_URL = "jdbc:mysql://localhost:3306/DB?useUnicode=true&characterEncoding=UTF-8";
 	static final String DB_PARAMETERMAP_USER_NAME = "mysqlDB";

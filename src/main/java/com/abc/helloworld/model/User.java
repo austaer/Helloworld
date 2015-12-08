@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 //Hibernate ¹êÅé¤Æ
 @Entity
-@Table(name = "employee")
+@Table(name = "User")
 public class User {
 
 	private String account;
@@ -70,13 +70,20 @@ public class User {
 	}
 
 	@Column(name = "create_time")
-	public String getCreate_time() {
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		String createTime = df.format(create_time);
-		return createTime;
+	public Date getCreate_time() {
+		return create_time;
 	}
 
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
+	}
+	
+	@Column(name = "status")
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }
