@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-@WebFilter(urlPatterns = { "/list", "/list/*", "/add", "/edit/*" })
-@SessionAttributes({ "loginStatus", "username" })
+@WebFilter(urlPatterns = { "/webmgr/*" })
+@SessionAttributes({ "loginStatus", "username", "sessionID" })
 public class MyUserNamePasswordAuthorizeFilter implements Filter {
 	private FilterConfig filterConfig;
 
@@ -30,9 +30,6 @@ public class MyUserNamePasswordAuthorizeFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
-		System.out.println("======================================");
-		System.out.println(request.getSession().getAttribute("loginStatus"));
-		System.out.println("======================================");
 		String loginStatus = request.getSession().getAttribute("loginStatus") == null ? "false"
 				: request.getSession().getAttribute("loginStatus").toString();
 		boolean isLogin = Boolean.parseBoolean(loginStatus);

@@ -45,8 +45,8 @@ public class HomeServiceImpl implements HomeService {
 	}
 
 	@Override
-	public void deleteEmployee(int id) {
-		dao.deleteEmployee(id);
+	public Boolean deleteEmployee(int id) {
+		return dao.deleteEmployee(id);
 		
 	}
 

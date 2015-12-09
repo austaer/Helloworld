@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.abc.helloworld.model.Employee;
 import com.abc.helloworld.serviceimpl.HomeServiceImpl;
 
 @Controller
+@RequestMapping("/webmgr")  
 public class HomeController {
 
 	@Autowired
@@ -88,25 +90,10 @@ public class HomeController {
 		return modelAndView;
 	}
 	
-	/*
-	 * @RequestMapping(value = "/index", method = RequestMethod.GET) public
-	 * String getIndex() { logger.debug("index() is executed!"); try { return
-	 * "index"; } catch (Exception e) { logger.debug(e.getMessage()); return "";
-	 * }
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(path = "/about/{day}", method = RequestMethod.GET) public
-	 * ModelAndView getDay(@PathVariable("day") String day, Model model) {
-	 * System.out.println("the day is a today : " + day);
-	 * 
-	 * ModelAndView mav = new ModelAndView(); mav.setViewName("index");
-	 * model.addAttribute("day:", day); mav.addObject(model); return mav; }
-	 * 
-	 * @RequestMapping(value = "/total", method = RequestMethod.GET) public
-	 * ModelAndView getTotal(Model model){ ModelAndView mav = new
-	 * ModelAndView(); mav.setViewName("index"); model.addAttribute("total",
-	 * service.getTotal()); model.addAttribute("list", service.getList());
-	 * return mav; }
-	 */
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody String deleteEmployee(@PathVariable("id") int id){
+		String result = "false";
+		result = String.valueOf(service.deleteEmployee(id));
+		return result;
+	}
 }

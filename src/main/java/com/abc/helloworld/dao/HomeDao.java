@@ -56,11 +56,19 @@ public class HomeDao {
 	}
 	
 	@Transactional
-	public void deleteEmployee(int id){
+	public Boolean deleteEmployee(int id){
 		Employee employeeToDelete = getEmployee(id);
 		if(employeeToDelete != null){
-			getCurrentSession().delete(employeeToDelete);
+			try{
+				getCurrentSession().delete(employeeToDelete);
+				return true;
+			} catch(Exception e){
+				e.printStackTrace();
+				return false;
+			}
+			
 		}
+		return false;
 	}
 	
 	@SuppressWarnings("unchecked")

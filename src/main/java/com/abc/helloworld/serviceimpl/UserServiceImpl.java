@@ -1,6 +1,7 @@
 package com.abc.helloworld.serviceimpl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Map<String, String> authorizeForLogin(User user) {
-		boolean isEmpty = dao.authorizeForLogin(user);
-		Map<String, String> list = new HashMap<String, String>();
-		if (isEmpty) {
-			list.put("view", "error");
+		List<User> list = dao.authorizeForLogin(user);
+		Map<String, String> map = new HashMap<String, String>();
+		if (list.isEmpty()) {
+			map.put("view", "error");
 		} else {
-			list.put("view", "sucess");
+			map.put("view", "sucess");
+			map.put("username", list.get(0).getUsername());
 		}
-		list.put("username", list.get("username"));
-		list.put("isEmpty", String.valueOf(isEmpty));
-		return list;
+		map.put("isEmpty", String.valueOf(list.isEmpty()));
+		return map;
 	}
 }

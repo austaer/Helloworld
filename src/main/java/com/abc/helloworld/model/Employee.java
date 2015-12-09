@@ -14,7 +14,8 @@ public class Employee {
 	private String name;
 	private String phone;
 	private String address;
-
+	private int status;
+	
 	public Employee() {
 	}
 
@@ -60,5 +61,14 @@ public class Employee {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@Column(name = "status")
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

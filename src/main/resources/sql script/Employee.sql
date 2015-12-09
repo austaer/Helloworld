@@ -5,5 +5,6 @@ create table Employee{
 	name varchar(50),
 	phone varchar(50),
 	address varchar(500),
+	status int,
     PRIMARY KEY (employeeId)
 }

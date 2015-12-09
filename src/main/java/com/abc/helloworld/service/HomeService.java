@@ -17,10 +17,9 @@ public interface HomeService {
 	
 	public Employee getEmployee(int id);
 	
-	public void deleteEmployee(int id);
+	public Boolean deleteEmployee(int id);
 	
 	public void updateEmployee(Employee employee);
 	
 	public List<Employee> getEmployees();
-	
 }

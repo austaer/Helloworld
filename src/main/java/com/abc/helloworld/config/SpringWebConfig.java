@@ -14,13 +14,13 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.abc.helloworld.controller" })
+@ComponentScan({ "com.abc.helloworld.controller", "com.abc.helloworld.exception.controller"})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		CacheControl cacheControl = CacheControl.maxAge(3600, TimeUnit.SECONDS);
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCacheControl(cacheControl);
+		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/").setCacheControl(cacheControl);
 	}
 
 	@Bean
