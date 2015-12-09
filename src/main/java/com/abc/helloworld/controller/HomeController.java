@@ -1,5 +1,7 @@
 package com.abc.helloworld.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,25 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.abc.helloworld.model.Employee;
 import com.abc.helloworld.serviceimpl.HomeServiceImpl;
 
 @Controller
-@RequestMapping("/webmgr")  
+@RequestMapping("/webmgr")
 public class HomeController {
 
 	@Autowired
 	private HomeServiceImpl service;
-	
+
 	@RequestMapping(value = "/")
-	public ModelAndView mainPage() {
+	public ModelAndView mainPage(HttpServletRequest request) {
 		return new ModelAndView("index");
 	}
 
 	@RequestMapping(value = "/index")
-	public ModelAndView indexPage() {
-		return new ModelAndView("index");
+	public ModelAndView indexPage(HttpServletRequest request) {
+		return new ModelAndView(new RedirectView(request.getContextPath() + "/webmgr/"));
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -58,7 +61,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/list")
-	public ModelAndView getEmployees(){
+	public ModelAndView getEmployees() {
 		ModelAndView modelAndView = new ModelAndView("index");
 		String message = "Show Employee Page.";
 		modelAndView.addObject("operationType", "list");
@@ -66,32 +69,32 @@ public class HomeController {
 		modelAndView.addObject("message", message);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
-	public ModelAndView getEmployee(@PathVariable("id") Integer id){
+	public ModelAndView getEmployee(@PathVariable("id") Integer id) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		modelAndView.addObject("employee", service.getEmployee(id));
 		modelAndView.addObject("operationType", "listOne");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView editEmployee(@PathVariable("id") Integer id){
+	public ModelAndView editEmployee(@PathVariable("id") Integer id) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		modelAndView.addObject("operationType", "edit");
 		modelAndView.addObject("employee", service.getEmployee(id));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView editEmployee(@ModelAttribute Employee employee){
+	public ModelAndView editEmployee(@ModelAttribute Employee employee) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		service.updateEmployee(employee);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody String deleteEmployee(@PathVariable("id") int id){
+	public @ResponseBody String deleteEmployee(@PathVariable("id") int id) {
 		String result = "false";
 		result = String.valueOf(service.deleteEmployee(id));
 		return result;

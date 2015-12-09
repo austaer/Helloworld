@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlerController {
-    @ExceptionHandler(Exception.class)
-    public String handleException(Exception e) {
-        return "error/404";// view name for 404 error
-    }   
+	@ExceptionHandler(Exception.class)
+	public String handle404Exception(Exception e) {
+		return "error/404";// view name for 404 error
+	}
 }

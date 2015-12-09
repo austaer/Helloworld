@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>HTTP 404 Page not found!</h1>
+<h1>HTTP 500 Internal server error</h1>
 </body>
 </html>

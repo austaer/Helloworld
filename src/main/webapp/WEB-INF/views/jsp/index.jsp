@@ -21,11 +21,11 @@ table {
 
 <!-- 最新編譯和最佳化的 CSS -->
 <link rel="stylesheet"
-	href="/resource/css/bootstrap.min.css">
+	href="/resources/css/bootstrap.min.css">
 
 <!-- 選擇性佈景主題 -->
 <link rel="stylesheet"
-	href="/resource/css/bootstrap-theme.min.css">
+	href="/resources/css/bootstrap-theme.min.css">
 </head>
 <body>
 	<%@ include file="template/header.jsp"%>
